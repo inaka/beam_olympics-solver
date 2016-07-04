@@ -1,4 +1,7 @@
 defmodule Boss do
+  @moduledoc """
+  Main interface against beam_olympics server
+  """
 
   @typedoc """
   A function spec
@@ -85,8 +88,8 @@ defmodule Boss do
   end
 
   defp call(msg) do
-    node = Application.get_env(:boss, :server, 'olympics@127.0.0.1')
-    GenServer.call({:bo_server, node}, msg, 60000)
+    server_node = Application.get_env(:boss, :server, 'olympics@127.0.0.1')
+    GenServer.call({:bo_server, server_node}, msg, 60_000)
   end
 
   defp player do

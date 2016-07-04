@@ -1,4 +1,7 @@
 defmodule BossFirstTask do
+  @moduledoc """
+  Solver for bo_first_task
+  """
 
   @doc """
   Solves the task requirement
