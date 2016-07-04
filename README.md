@@ -1,2 +1,3 @@
-# beam_olympics-solver
-Solutions for beam_olympics
+# BOSS
+
+[Beam Olympics](https://github.com/inaka/beam_olympics) Super Solver

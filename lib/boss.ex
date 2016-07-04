@@ -1,0 +1,2 @@
+defmodule Boss do
+end
