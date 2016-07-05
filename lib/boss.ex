@@ -41,7 +41,7 @@ defmodule Boss do
   @doc """
   Signs up to the game. It uses node name as player name.
   """
-  @spec signup() :: {:ok, task} | {:error, term}
+  @spec signup() :: {:ok, task} | {:error, :conflict}
   def signup do
     call {:signup, player}
   end
@@ -49,7 +49,7 @@ defmodule Boss do
   @doc """
   Returns the current task
   """
-  @spec task() :: {:ok, task} | {:error, term}
+  @spec task() :: {:ok, task} | {:error, :ended | :forbidden | :notfound}
   def task do
     call {:task, player}
   end
@@ -58,7 +58,9 @@ defmodule Boss do
   Submits a solution
   """
   @spec submit(term) ::
-    {:ok, task} | :the_end | {:error, term} | {:failures, [term]}
+    {:ok, task} | :the_end |
+    {:error, :invalid | :timeout | :ended | :forbidden | :notfound} |
+    {:failures, [term,...]}
   def submit(solution) do
     call {:submit, player, solution}
   end
@@ -66,7 +68,8 @@ defmodule Boss do
   @doc """
   Skips a task
   """
-  @spec skip() :: {:ok, task} | :the_end | {:error, term}
+  @spec skip() ::
+    {:ok, task} | :the_end | {:error, :ended | :forbidden | :notfound}
   def skip do
     call {:skip, player}
   end
@@ -74,7 +77,7 @@ defmodule Boss do
   @doc """
   Returns the player score
   """
-  @spec score() :: {:ok, integer} | {:error, term}
+  @spec score() :: {:ok, integer} | {:error, :forbidden | :notfound}
   def score do
     call {:score, player}
   end
