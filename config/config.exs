@@ -1,6 +1,6 @@
 use Mix.Config
 
-config :boss, server: :'olympics@Shady-Grove.local'
+config :boss, server: :'olympics@127.0.0.1'
 
 config :logger, level: :debug
 
