@@ -1,6 +1,6 @@
 defmodule BossMissing do
   @moduledoc """
-  Solver for bo_awesomeness
+  Solver for bo_missing_operations
   """
   @doc """
   Solves the task requirement
