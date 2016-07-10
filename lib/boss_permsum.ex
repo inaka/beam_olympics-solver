@@ -1,6 +1,6 @@
 defmodule BossPermSum do
   @moduledoc """
-  Solver for bo_missing_operations
+  Solver for bo_permutations_sum
   """
   @doc """
   Solves the task requirement
