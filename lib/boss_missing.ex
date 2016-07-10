@@ -15,7 +15,7 @@ defmodule BossMissing do
   def solution(operands, result) do
     case do_solution(Enum.reverse(operands), result) do
       :notfound -> :notfound
-      solution -> Enum.reverse(solution)
+      op_list -> Enum.reverse(op_list)
     end
   end
 
