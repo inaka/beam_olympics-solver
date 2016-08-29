@@ -1,4 +1,7 @@
 defmodule EntangledServer do
+  @moduledoc """
+  Entangled process for bo_entangled
+  """
   use GenServer
 
   def start() do
