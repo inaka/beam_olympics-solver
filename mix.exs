@@ -16,6 +16,7 @@ defmodule Boss.Mixfile do
 
   defp deps do
     [
+      {:exrm, "~> 1.0"},
       {:credo, "~> 0.4", only: [:dev, :test]}
     ]
   end
