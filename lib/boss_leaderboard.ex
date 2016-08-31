@@ -27,17 +27,17 @@ defmodule BossLeaderBoard do
     %{:players => players, :tasks => tasks} = Boss.stats
     sorted = Enum.sort(players, fn(p1, p2) -> p1.score > p2.score end)
     IO.puts IO.ANSI.clear
-    print_players sorted
+    for player <- players do
+      print_player(player)
+    end
   end
 
-  defp print_players(players) do
-    for player <- players do
-      score = player.score |> Integer.to_string |> String.rjust(5, ?\s)
-      IO.puts(
-        "#{IO.ANSI.bright}#{score} #{IO.ANSI.normal} #{player.name} " <>
-        "(#{IO.ANSI.yellow}#{player.done}/#{tasks}#{IO.ANSI.default_color}" <>
-        " tasks)")
-    end
+  defp print_player(player) do
+    score = player.score |> Integer.to_string |> String.rjust(5, ?\s)
+    IO.puts(
+      "#{IO.ANSI.bright}#{score} #{IO.ANSI.normal} #{player.name} " <>
+      "(#{IO.ANSI.yellow}#{player.done}/#{tasks}#{IO.ANSI.default_color}" <>
+      " tasks)")
   end
 
 end
