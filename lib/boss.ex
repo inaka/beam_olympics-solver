@@ -90,6 +90,13 @@ defmodule Boss do
     call :stats
   end
 
+  @doc """
+  Renders the leaderboard and refreshes it periodically
+  """
+  def leaderboard do
+    BossLeaderBoard.start
+  end
+
   defp call(msg) do
     server_node = Application.get_env(:boss, :server, 'olympics@127.0.0.1')
     GenServer.call({:bo_server, server_node}, msg, 60_000)
