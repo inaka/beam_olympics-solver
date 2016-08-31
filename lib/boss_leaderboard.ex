@@ -5,7 +5,7 @@ defmodule BossLeaderBoard do
   use GenServer
 
   def start() do
-    start(10000)
+    start(10_000)
   end
 
   def start(refresh_ms) do
@@ -27,7 +27,11 @@ defmodule BossLeaderBoard do
     %{:players => players, :tasks => tasks} = Boss.stats
     sorted = Enum.sort(players, fn(p1, p2) -> p1.score > p2.score end)
     IO.puts IO.ANSI.clear
-    for player <- sorted do
+    print_players sorted
+  end
+
+  defp print_players(players) do
+    for player <- players do
       score = player.score |> Integer.to_string |> String.rjust(5, ?\s)
       IO.puts(
         "#{IO.ANSI.bright}#{score} #{IO.ANSI.normal} #{player.name} " <>
